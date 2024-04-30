@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ProjectDetails</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      .vl {
+        border-left: 6px solid green;
+        height: 100px;
+        position: absolute;
+        left: 50%;
+        margin-left: -3px;
+        top: 0;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-900">
+    <%-include('_issue_navbar') %> <% if(project.issues.length >= 1){ %>
+
+    <div class="flex flex-col w-full overflow-auto	  justify-center h-screen">
+      <div
+        class="relative flex flex-col md:flex-row md:space-x-5 space-y-3 md:space-y-0 rounded-xl shadow-lg p-3 max-w-xs md:max-w-3xl mx-auto max-w-sm p-6 border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+      >
+        <div
+          class="w-full md:w-1/3 grid place-items-center mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+        >
+          <%=project.name%>
+        </div>
+        <div class="w-full md:w-2/3 flex flex-col space-y-2 p-3">
+          <div class="flex justify-between item-center">
+            <p class="text-gray-400 font-medium hidden md:block">Severity:</p>
+            <div class="flex items-center">
+              <p class="text-gray-600 font-bold text-sm ml-1">
+                <span
+                  class="bg-red-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300"
+                  >high</span
+                >
+              </p>
+            </div>
+          </div>
+          <% for(let issue of project.issues) { if((!req.query.author ||
+          issue.author === req.query.author) && (!req.query.labels ||
+          issue.labels.includes(req.query.labels))) { %>
+          <h3
+            class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white md:text-3xl text-xl"
+          >
+            Title: <%= issue.title %>
+          </h3>
+          <p class="text-xl mt-6 text-sm mb-[10px] text-green-300">
+            Author: <%= issue.author %>
+          </p>
+          <h3 class="text-yellow-400 md:text-3xl text-xl mt-6">
+            <%= issue.labels %>
+          </h3>
+
+          <div class="my-4">
+            <p class="md:text-lg text-gray-400 text-base">
+              <%= issue.description %>
+            </p>
+          </div>
+          <hr />
+          <% } } %>
+        </div>
+      </div>
+    </div>
+    <hr />
+    <% } %> <%-include('_footer.ejs') %>
+  </body>
+</html>

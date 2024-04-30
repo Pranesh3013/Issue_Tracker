@@ -1,0 +1,33 @@
+{
+  "name": "issue-tracker",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "Issue tracker Coding test ",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iAdtya/Issue-Tracker.git"
+  },
+  "author": "Aditya khedekar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/iAdtya/Issue-Tracker/issues"
+  },
+  "homepage": "https://github.com/iAdtya/Issue-Tracker#readme",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "ejs": "^3.1.9",
+    "express": "^4.19.2",
+    "mongodb": "^6.1.0",
+    "mongoose": "^7.6.11",
+    "nodemon": "^3.0.1",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "eslint": "^8.51.0"
+  }
+}
